@@ -114,38 +114,10 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-" ================ RTags ======================
-"let g:rtagsUseDefaultMappings = 0
-let g:rtagsJumpStackMaxSize = 2000
-let g:rtagsUseLocationList = 0
-"noremap <C-T>. :call rtags#JumpTo()<CR>
-"noremap <C-T>b <C-o>
-"noremap <C-T>f :call rtags#FindRefs()<CR>
-"noremap <C-T>n :call rtags#FindRefsByName(input("Pattern? ", "", "customlist,rtags#CompleteSymbols"))<CR>
-"noremap <C-T>s :call rtags#FindSymbols(input("Pattern? ", "", "customlist,rtags#CompleteSymbols"))<CR>
-"noremap <C-T>r :call rtags#ReindexFile()<CR>
-
-" ================ YouCompleteMe ==============
-"Bundle 'Valloric/YouCompleteMe'
-" source, :BundleInstall
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_python_binary_path = '/usr/local/fbcode/gcc-5-glibc-2.23/bin/python2.7'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_error_symbol = 'x'
-let g:ycm_warning_symbol = '!'
-
-" YCM must use the same Python version it's linked against
-let g:ycm_path_to_python_interpreter = '/data/users/madelaine/fbsource/fbcode/third-party-buck/gcc-5-glibc-2.23/build/python/2.7/bin/python2.7'
-" Default ycm_extra_conf.py for fbcode
-let g:ycm_global_ycm_extra_conf = '/home/madelaine/.vim/bundle/YouCompleteMe/ycm_extra_conf_fbcode.py'
-
-nnoremap <leader>y :YcmForceCompileAndDiagnostics<CR>
-nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
 " ================ Plugins =====================
-so ~/.yadr/vim/settings.vim
+if filereadable(expand("~/.yadr/vim/settings.vim"))
+  so ~/.yadr/vim/settings.vim
+endif
 "so ~/.vim/settings/syntastic.vim
 "so ~/.vim/bundle/showmarks/plugin/showmarks.vim
 "so ~/.vim/settings/solarized.vim
@@ -161,15 +133,15 @@ set background=dark
 colorscheme solarized
 
 " ================ Custom Settings ========================
+if filereadable(expand("~/dotfiles/fbcodevimrc"))
+  source ~/dotfiles/fbcodevimrc
+endif
 
 " BUCK files are python.
 au BufRead,BufNewFile *BUCK set filetype=python
 
 au BufRead,BufNewFile .bash_aliases set filetype=bash
-" YouCompleteMe
-let g:ycm_python_binary_path = '/usr/local/fbcode/gcc-5-glibc-2.23/bin/python2.7'
 
-source $LOCAL_ADMIN_SCRIPTS/master.vimrc
 inoremap jk <Esc>
 inoremap ;; <Esc>
 

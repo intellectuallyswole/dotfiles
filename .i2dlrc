@@ -1,0 +1,6 @@
+
+alias train.par="/data/users/$USER/fbsource/fbcode/buck-out/gen/experimental/deeplearning/course/$USER/text/train.par"
+alias test.par="/data/users/$USER/fbsource/fbcode/buck-out/gen/experimental/deeplearning/course/$USER/vision/test.par"
+alias i2dl="cd ~/fbsource/fbcode/experimental/deeplearning/course/madelaine/"
+alias visualize.par="/data/users/$USER/fbsource/fbcode/buck-out/gen/experimental/deeplearning/course/$USER/vision/visualize.par"
+alias leader_board.par="/data/users/$USER/fbsource/fbcode/buck-out/gen/deeplearning/leader_board/leader_board.par"
