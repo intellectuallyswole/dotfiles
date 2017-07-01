@@ -133,7 +133,7 @@ set background=dark
 colorscheme solarized
 
 " ================ Custom Settings ========================
-if filereadable(expand("~/dotfiles/fbcodevimrc"))
+if filereadable(expand("~/fbcode"))
   source ~/dotfiles/fbcodevimrc
 endif
 
