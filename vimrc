@@ -126,6 +126,7 @@ Bundle 'phleet/vim-mercenary'
 Bundle 'file-line'
 Plugin 'lyuts/vim-rtags'
 Plugin 'wincent/command-t'
+Plugin 'altercation/vim-colors-solarized'
 
 " ================ Colors ======================
 syntax enable
