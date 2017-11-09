@@ -41,6 +41,20 @@ if filereadable(expand("~/.vim/vundles.vim"))
 endif
 au BufNewFile,BufRead *.vundle set filetype=vim
 
+" ================ Plugins =====================
+if filereadable(expand("~/.yadr/vim/settings.vim"))
+  so ~/.yadr/vim/settings.vim
+endif
+"so ~/.vim/settings/syntastic.vim
+"so ~/.vim/bundle/showmarks/plugin/showmarks.vim
+"so ~/.vim/settings/solarized.vim
+
+Bundle 'phleet/vim-mercenary'
+Bundle 'file-line'
+Plugin 'lyuts/vim-rtags'
+Plugin 'wincent/command-t'
+Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
+
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -114,24 +128,11 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-" ================ Plugins =====================
-if filereadable(expand("~/.yadr/vim/settings.vim"))
-  so ~/.yadr/vim/settings.vim
-endif
-"so ~/.vim/settings/syntastic.vim
-"so ~/.vim/bundle/showmarks/plugin/showmarks.vim
-"so ~/.vim/settings/solarized.vim
-
-Bundle 'phleet/vim-mercenary'
-Bundle 'file-line'
-Plugin 'lyuts/vim-rtags'
-Plugin 'wincent/command-t'
-Plugin 'altercation/vim-colors-solarized'
 
 " ================ Colors ======================
 syntax enable
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 
 " ================ Custom Settings ========================
 if filereadable(expand("~/fbcode"))
