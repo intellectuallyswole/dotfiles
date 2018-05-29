@@ -54,6 +54,9 @@ Bundle 'file-line'
 Plugin 'lyuts/vim-rtags'
 Plugin 'wincent/command-t'
 Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
+Plugin 'speeddating'
+Plugin 'vim-orgmode'
+Plugin 'utl.vim'
 
 " ================ Turn Off Swap Files ==============
 
@@ -185,3 +188,14 @@ nnoremap <c-p> p
 " Somewhere between the 'tab' section and here, expandtab
 " gets turned off ;_;
 set expandtab
+
+" Clang-format (ctrl+k)
+map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
+imap <C-K> <ESC>:pyf /usr/local/share/clang/clang-format.py<CR>i
+
+" leave escape 
+imap jj <Esc>
+
+" fuzzyfinder
+set rtp+=~/.fzf
+
