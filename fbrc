@@ -10,7 +10,9 @@ function reverthg () { hg shelve && hg checkout master && hg pull --rebase && To
 # hg
 function revert () { git stash && git checkout master && git pull --rebase && Tools/revert $1 "build break" }
 
-alias paste="pbpaste | arc paste |  sed 's/[^:]*: //' | pbcopy"
+# alias paste="pbpaste | arc paste |  sed 's/[^:]*: //' | pbcopy"
+alias macpaste="pbpaste | fbarc paste |  sed 's/[^:]*: //' | pbcopy"
+alias tmpaste="tmux show-buffer | arc paste |  sed 's/[^:]*: //' "
 
 function dl () {
   rsync --copy-links madelaine@madelaine.sb.facebook.com:$1 ~/Downloads/

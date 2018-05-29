@@ -1,3 +1,4 @@
 .ignore
+.githubtoken
 .hg/
 oh-my-zsh
