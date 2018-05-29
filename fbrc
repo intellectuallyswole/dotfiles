@@ -1,17 +1,20 @@
 
-# arcanist 
-alias ad='arc diff --apply-patches --amend-all'; 
-alias ad1='arc diff HEAD^ --apply-patches --amend-all'; alias adall='arc diff master --apply-patches --amend-all'; 
-alias prev1='arc diff HEAD^ --preview --amend-autofixes --excuse preview'; 
-alias new='git commit -a -m "creating a new branch" && git checkout master && git pull origin master && arc feature '; 
+# arcanist
+alias ad='arc diff --apply-patches --amend-all';
+alias ad1='arc diff HEAD^ --apply-patches --amend-all'; alias adall='arc diff master --apply-patches --amend-all';
+alias prev1='arc diff HEAD^ --preview --amend-autofixes --excuse preview';
+alias new='git commit -a -m "creating a new branch" && git checkout master && git pull origin master && arc feature ';
 
 function reverthg () { hg shelve && hg checkout master && hg pull --rebase && Tools/revert $1 "build break" }
 
 # hg
-function revert () { git stash && git checkout master && git pull --rebase && Tools/revert $1 "build break" } 
+function revert () { git stash && git checkout master && git pull --rebase && Tools/revert $1 "build break" }
 
-alias paste="pbpaste | fbarc paste |  sed 's/[^:]*: //' | pbcopy"
+alias paste="pbpaste | arc paste |  sed 's/[^:]*: //' | pbcopy"
 
 function dl () {
   rsync --copy-links madelaine@madelaine.sb.facebook.com:$1 ~/Downloads/
 }
+
+PATH=$PATH:/opt/facebook/hg/bin
+export PATH

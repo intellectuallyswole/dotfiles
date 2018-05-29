@@ -161,12 +161,16 @@ let c_space_errors=1
 "
 " " Also highlight empty lines at EOF.
 match ErrorMsg /\s\+$\| \+\ze\t/
+
+" Remove trailing whitespace on save.
+autocmd BufWritePre * :%s/\s\+$//e
+
 "
 " " Enable incremental search.
 set incsearch
 
 " Might help with copy/paste
-set clipboard=unnamed
+"set clipboard=unnamed
 " by default
 set wrap
 
@@ -184,3 +188,5 @@ nnoremap <c-p> p
 " Somewhere between the 'tab' section and here, expandtab
 " gets turned off ;_;
 set expandtab
+
+:inoremap jk <Esc>

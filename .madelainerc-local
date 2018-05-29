@@ -57,3 +57,7 @@ alias ping='ping -c4'
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 alias killqld='find /private/var/folders/ -name com.apple.QuickLook.thumbnailcache | sudo xargs rm -rf && /usr/bin/killall -9 quicklookd'
+
+alias killcisco="kill -9 $(pgrep -i cisco)"
+
+export DOCKER_ID_USER="intellectuallyswole"
