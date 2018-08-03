@@ -1,0 +1,63 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
+# * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+
+# Xcode style keys
+'.platform-darwin atom-workspace':
+  'ctrl-cmd-up': 'nuclide-related-files:jump-to-next-related-file'
+  'ctrl-cmd-down': 'nuclide-related-files:jump-to-previous-related-file'
+  'cmd-shift-o': 'nuclide-quick-open:find-anything-via-omni-search'
+  'ctrl-6': 'outline-view:toggle'
+  'cmd-shift-J': 'tree-view:reveal-active-file'
+  'cmd-ctrl-left': 'nuclide-navigation-stack:navigate-backwards'
+  'cmd-ctrl-right': 'nuclide-navigation-stack:navigate-forwards'
+
+'.platform-darwin atom-text-editor':
+  'shift-cmd-left': 'editor:select-to-beginning-of-line'
+  'pagedown': 'editor:page-down-without-moving-cursor'
+  'pageup': 'editor:page-up-without-moving-cursor'
+  'end': 'core:move-to-bottom'
+  'home': 'core:move-to-top'
+  'cmd-ctrl-left': 'unset!' # dumb anyway
+  'cmd-ctrl-right': 'unset!' # dumb anyway
+
+# removing specific override of ctrl-cmd-up/down
+'atom-workspace atom-text-editor:not([mini])':
+  'ctrl-cmd-up': 'nuclide-related-files:jump-to-next-related-file'
+  'ctrl-cmd-down': 'nuclide-related-files:jump-to-previous-related-file'
+
+
+'atom-text-editor.vim-mode-plus.insert-mode':
+  'j k': 'vim-mode-plus:activate-normal-mode'
+  'ctrl-c': 'vim-mode-plus:activate-normal-mode'
+
+'atom-text-editor[mini]':
+  'j k': 'core:cancel'
+  'ctrl-c': 'core:cancel'
+
+
+'atom-workspace':
+  # note: commands are case-sensitive
+  'cmd-b': 'nuclide-task-runner:Buck-build'
