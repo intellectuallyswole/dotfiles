@@ -26,8 +26,8 @@
 
 # Xcode style keys
 '.platform-darwin atom-workspace':
-  'ctrl-cmd-up': 'nuclide-related-files:jump-to-next-related-file'
-  'ctrl-cmd-down': 'nuclide-related-files:jump-to-previous-related-file'
+  'ctrl-cmd-up': 'file:open-alternate'
+  'ctrl-cmd-down': 'file:open-alternate'
   'cmd-shift-o': 'nuclide-quick-open:find-anything-via-omni-search'
   'ctrl-6': 'outline-view:toggle'
   'cmd-shift-J': 'tree-view:reveal-active-file'
@@ -45,8 +45,8 @@
 
 # removing specific override of ctrl-cmd-up/down
 'atom-workspace atom-text-editor:not([mini])':
-  'ctrl-cmd-up': 'nuclide-related-files:jump-to-next-related-file'
-  'ctrl-cmd-down': 'nuclide-related-files:jump-to-previous-related-file'
+  'ctrl-cmd-up': 'file:open-alternate'
+  'ctrl-cmd-down': 'file:open-alternate'
 
 
 'atom-text-editor.vim-mode-plus.insert-mode':
