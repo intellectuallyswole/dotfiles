@@ -8,6 +8,21 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'reedes/vim-pencil'
+
+" Plugins go here
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " ================ General Config ====================
 
 set number                      "Line numbers are good
@@ -150,7 +165,12 @@ au BufRead,BufNewFile .bash_aliases set filetype=bash
 inoremap jk <Esc>
 inoremap ;; <Esc>
 
-set number "line numbers!
+" leave escape
+"imap jj <Esc>
+"inoremap jk <Esc>
+
+
+"set number "line numbers!
 set smartcase  "case insensitive search
 set iskeyword=@,45,48-57,58,_,192-255,# "ctags
 
@@ -193,14 +213,9 @@ nnoremap <c-p> p
 " gets turned off ;_;
 set expandtab
 
-:inoremap jk <Esc>
-
 " Clang-format (ctrl+k)
 map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/local/share/clang/clang-format.py<CR>i
-
-" leave escape
-imap jj <Esc>
 
 " fuzzyfinder
 set rtp+=~/.fzf
