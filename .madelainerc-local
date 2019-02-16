@@ -1,7 +1,7 @@
 export SHELL=zsh;
 
 # FB
-source ~/dotfiles/fbrc
+#source ~/dotfiles/fbrc
 
 #hg aliases
 alias hw='hg log --numstat';
@@ -15,15 +15,20 @@ alias br='git branch';
 alias st='git status';
 alias cont='git rebase --continue';
 alias gupdate='git commit -a --amend --reuse-message=HEAD'
+alias amend='git commit -a --amend --reuse-message=HEAD'
 alias up='git fetch; git rebase origin/master';
 alias reb='git rebase -i';
 alias change='git log --reverse origin/stable..';
 alias mup='git checkout master; git pull origin master';
-alias fresh='git commit -am "Updating local branch"; git fetch && git rebase origin/stable && buck';
 alias co='git checkout';
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
+function gb () {
+  git branch $1 && git checkout $1
+}
 
-
+# tmux
+alias tsb='tmux show-buffer'
+alias tcp='tmux show-buffer | pbcopy'
 function notify {
 if $@
 then
@@ -33,17 +38,8 @@ else
 fi
 }
 
-
-# pony debugger
-alias ponyd='ponyd serve --listen-interface=127.0.0.1';
-
-alias todo='vim ~/todo/todo2015.todo';
-
 export EDITOR=vim
-
 alias hack=vim
-
-
 
 alias killadobe='sudo cp /dev/null /private/var/root/Library/Logs/PDApp.log'
 

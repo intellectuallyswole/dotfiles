@@ -10,7 +10,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# source ~/.madelainerc
+[ -f ~/src/dotfiles/.madelainerc-local ] && source ~/src/dotfiles/.madelainerc-local
 source ~/zsh/antigen.zsh
 
 antigen bundle git
@@ -21,8 +21,8 @@ antigen apply
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="blinks"
-# ZSH_THEME="tulloch"
+#ZSH_THEME="madelaine"
+ZSH_THEME="tulloch"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -62,22 +62,15 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mercurial)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-export PATH="$PATH:/Users/madelaine/devtools/arcanist/bin:/Users/madelaine/src/Cycript_0.9.502:/Users/madelaine/src/fan.cy::/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/bin/"
-
 # MacPorts Installer addition on 2012-09-20_at_17:19:00: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
-
-# Prefer custom-built vim (/usr/local/bin/vim) over /usr/bin/vim
-export PATH=/usr/local/bin/:$PATH
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
@@ -86,11 +79,7 @@ export PATH
 # homebrew python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
-export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/bin
-export PATH=$PATH:/Users/madelaine/devtools/buck/bin/
 export PATH=/usr/local/bin/:$PATH
-export PATH=/usr/local/ant/bin/:$PATH
 export PATH=~/bin:$PATH
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -104,29 +93,10 @@ export PATH=~/bin:$PATH
 export EDITOR='vim'
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# OPAM configuration
-. /Users/madelaine/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-eval $(thefuck --alias)
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PATH="$HOME/.yarn/bin:$PATH"
+source ~/.whisperrc
+
+# Set tmux window status title to be vim filename
+PROMPT_COMMAND='echo -ne "\033]0;\007"'

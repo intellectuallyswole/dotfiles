@@ -16,7 +16,6 @@ call vundle#begin()
 "
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'reedes/vim-pencil'
 
 " Plugins go here
 
@@ -57,19 +56,11 @@ endif
 au BufNewFile,BufRead *.vundle set filetype=vim
 
 " ================ Plugins =====================
-if filereadable(expand("~/.yadr/vim/settings.vim"))
-  so ~/.yadr/vim/settings.vim
-endif
-"so ~/.vim/settings/syntastic.vim
-"so ~/.vim/bundle/showmarks/plugin/showmarks.vim
-"so ~/.vim/settings/solarized.vim
-
 Bundle 'phleet/vim-mercenary'
 Bundle 'file-line'
 Plugin 'lyuts/vim-rtags'
 Plugin 'wincent/command-t'
 Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
-Plugin 'speeddating'
 Plugin 'vim-orgmode'
 Plugin 'utl.vim'
 
@@ -90,7 +81,7 @@ endif
 
 " ================ Indentation ======================
 
-set autoindent
+" set autoindent
 set smartindent
 set smarttab
 set shiftwidth=2
@@ -98,9 +89,6 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-" Auto indent pasted text
-"nnoremap p p=`]<C-o>
-"nnoremap P P=`]<C-o>
 
 filetype plugin on
 filetype indent on
@@ -162,8 +150,6 @@ au BufRead,BufNewFile *BUCK set filetype=python
 
 au BufRead,BufNewFile .bash_aliases set filetype=bash
 
-inoremap jk <Esc>
-inoremap ;; <Esc>
 
 " leave escape
 "imap jj <Esc>
@@ -218,5 +204,25 @@ map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/local/share/clang/clang-format.py<CR>i
 
 " fuzzyfinder
-set rtp+=~/.fzf
+"set rtp+=~/.fzf
 
+" jk or ;; exit insert mode.
+inoremap jk <Esc>
+inoremap ;; <Esc>
+
+
+" Auto indent pasted text
+"nnoremap p p=`]<C-o>
+"nnoremap P P=`]<C-o>
+
+" Set tmux window title to be vim filename
+"autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+"set title
+if exists('$TMUX')
+
+  autocmd BufEnter * call system("tmux rename-window " . expand("%:t"))
+  "autocmd VimLeave * call system("tmux rename-window bash")
+  autocmd VimLeave * call system("tmux setw automatic-rename")
+  autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+  set title
+endif

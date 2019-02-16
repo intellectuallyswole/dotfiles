@@ -7,9 +7,9 @@
 # git untracked files modification from Brian Carper:
 # http://briancarper.net/blog/570/git-info-in-your-zsh-prompt
 
-if [ -f /mnt/vol/engshare/admin/scripts/scm-prompt ]; then
-    . /mnt/vol/engshare/admin/scripts/scm-prompt
-fi
+#if [ -f /mnt/vol/engshare/admin/scripts/scm-prompt ]; then
+#    . /mnt/vol/engshare/admin/scripts/scm-prompt
+#fi
 
 function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
@@ -57,40 +57,40 @@ zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 
-# function steeef_preexec {
-#     case "$(history $HISTCMD)" in
-#         *git*)
-#             PR_GIT_UPDATE=1
-#             ;;
-#         *svn*)
-#             PR_GIT_UPDATE=1
-#             ;;
-#     esac
-# }
-# add-zsh-hook preexec steeef_preexec
+ function steeef_preexec {
+     case "$(history $HISTCMD)" in
+         *git*)
+             PR_GIT_UPDATE=1
+             ;;
+         *svn*)
+             PR_GIT_UPDATE=1
+             ;;
+     esac
+ }
+ add-zsh-hook preexec steeef_preexec
 
-# function steeef_chpwd {
-#     PR_GIT_UPDATE=1
-# }
-# add-zsh-hook chpwd steeef_chpwd
+ function steeef_chpwd {
+     PR_GIT_UPDATE=1
+ }
+ add-zsh-hook chpwd steeef_chpwd
 
-# function steeef_precmd {
-#   #if [[ -n "$PR_GIT_UPDATE" ]] ; then
-# # check for untracked files or updated submodules, since vcs_info doesn't
-#   #  if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-#  #     PR_GIT_UPDATE=1
-#  #       FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST})"
-#  #   else
-#       FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
-#  #       fi
-#         zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
+ function steeef_precmd {
+   #if [[ -n "$PR_GIT_UPDATE" ]] ; then
+ # check for untracked files or updated submodules, since vcs_info doesn't
+   #  if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+  #     PR_GIT_UPDATE=1
+  #       FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST})"
+  #   else
+       FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
+  #       fi
+         zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 
-#         vcs_info 'prompt'
-#         PR_GIT_UPDATE=
-# #        fi
-# }
-# add-zsh-hook precmd steeef_precmd
+         vcs_info 'prompt'
+         PR_GIT_UPDATE=
+ #        fi
+ }
+ add-zsh-hook precmd steeef_precmd
 
-# PROMPT=$'
-# %{$purple%}%n%{$reset_color%} at %{$orange%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%} $vcs_info_msg_0_
-# $(virtualenv_info)%{$turquoise%}∴%{$reset_color%} '
+PROMPT=$'
+%{$purple%}%n%{$reset_color%} at %{$orange%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%} $vcs_info_msg_0_
+$(virtualenv_info)%{$turquoise%}ℳ% {$reset_color%} '
