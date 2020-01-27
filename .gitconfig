@@ -26,9 +26,20 @@
   smudge = git-media-smudge %f
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lgs = log --stat
   co = checkout
+  st = status
+  fetch = fetch -p
+  rb = rebase
+	cp  = cherry-pick
+  rbm = rebase origin/master
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
+[push]
+	default = current
+#[submodule]
+#	recurse = true
