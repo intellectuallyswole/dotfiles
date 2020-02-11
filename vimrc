@@ -58,12 +58,18 @@ au BufNewFile,BufRead *.vundle set filetype=vim
 " ================ Plugins =====================
 Bundle 'phleet/vim-mercenary'
 Bundle 'file-line'
-Plugin 'lyuts/vim-rtags'
-Plugin 'wincent/command-t'
+" Plugin 'lyuts/vim-rtags'
+" Plugin 'wincent/command-t'
 Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
-Plugin 'vim-orgmode'
 Plugin 'utl.vim'
+" Plugin 'leafgarland/typescript-vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
+" vim-plug
+ call plug#begin()
+"" Autoformatting (prettier)
+" Plug 'sbdchd/neoformat'
+call plug#end()
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -81,6 +87,9 @@ endif
 
 " ================ Indentation ======================
 
+filetype plugin on
+filetype indent on
+
 " set autoindent
 set smartindent
 set smarttab
@@ -89,9 +98,6 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-
-filetype plugin on
-filetype indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -141,9 +147,6 @@ set background=dark
 " colorscheme solarized
 
 " ================ Custom Settings ========================
-if filereadable(expand("~/fbcode"))
-  source ~/dotfiles/fbcodevimrc
-endif
 
 " BUCK files are python.
 au BufRead,BufNewFile *BUCK set filetype=python
@@ -195,9 +198,6 @@ set colorcolumn=+1,+21 " relative (to textwidth) columns to highlight "
 nnoremap p ]p
 nnoremap <c-p> p
 
-" Somewhere between the 'tab' section and here, expandtab
-" gets turned off ;_;
-set expandtab
 
 " Clang-format (ctrl+k)
 map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>

@@ -40,7 +40,7 @@ ZSH_THEME="tulloch"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -62,7 +62,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git history )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,7 +96,10 @@ export EDITOR='vim'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-source ~/.whisperrc
-
 # Set tmux window status title to be vim filename
 PROMPT_COMMAND='echo -ne "\033]0;\007"'
+
+
+[ -f ~/src/whisper-dotfiles/.mdb-whisperrc ] && source ~/src/whisper-dotfiles/.mdb-whisperrc
+
+eval $(thefuck --alias)
