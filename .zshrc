@@ -11,7 +11,8 @@
 export ZSH=$HOME/.oh-my-zsh
 
 [ -f ~/src/dotfiles/.madelainerc-local ] && source ~/src/dotfiles/.madelainerc-local
-source ~/zsh/antigen.zsh
+# source ~/.madelainerc
+source ~/src/dotfiles/antigen.zsh
 
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -22,6 +23,7 @@ antigen apply
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="madelaine"
+#  ZSH_THEME="blinks"
 ZSH_THEME="tulloch"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -99,7 +101,17 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Set tmux window status title to be vim filename
 PROMPT_COMMAND='echo -ne "\033]0;\007"'
 
+# OPAM configuration
+# . /Users/madelaine/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-[ -f ~/src/whisper-dotfiles/.mdb-whisperrc ] && source ~/src/whisper-dotfiles/.mdb-whisperrc
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-eval $(thefuck --alias)
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/madelaineboyd/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/madelaineboyd/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/madelaineboyd/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/madelaineboyd/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+source ~/.profile

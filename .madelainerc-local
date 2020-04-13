@@ -52,7 +52,7 @@ export NVM_DIR="/Users/madelaine/.nvm"
 
 # creeped from @compnerd's dotfiles:
 # https://github.com/compnerd/dotfiles/blob/master/zshrc
-alias ping='ping -c4'
+# alias ping='ping -c4'
 
 #
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

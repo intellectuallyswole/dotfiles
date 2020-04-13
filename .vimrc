@@ -1,7 +1,5 @@
-set runtimepath+=$ADMIN_SCRIPTS/vim
- 
 set nocompatible
-filetype off 
+filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -23,7 +21,7 @@ set t_Co=256
 set background=dark
 
 " fzf
-set rtp+=~/.fzfA
+"set rtp+=~/.fzfA
 
 :inoremap jk <esc>
 
