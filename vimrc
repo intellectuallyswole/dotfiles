@@ -65,11 +65,6 @@ Plugin 'utl.vim'
 " Plugin 'leafgarland/typescript-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 
-" vim-plug
- call plug#begin()
-"" Autoformatting (prettier)
-" Plug 'sbdchd/neoformat'
-call plug#end()
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
