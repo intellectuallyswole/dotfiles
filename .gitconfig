@@ -39,6 +39,11 @@
 	required = true
 	clean = git-lfs clean -- %f
 
+[filter "spabs"]
+	clean = expand --initial -t 4
+	smudge = expand --initial -t 4
+	required
+
 [push]
 	default = current
 #[submodule]
