@@ -8,20 +8,6 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Plugins go here
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 " ================ General Config ====================
 
 set number                      "Line numbers are good
@@ -47,23 +33,16 @@ syntax on
 " the plugins.
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
-endif
-au BufNewFile,BufRead *.vundle set filetype=vim
 
 " ================ Plugins =====================
-Bundle 'phleet/vim-mercenary'
-Bundle 'file-line'
+"Bundle 'phleet/vim-mercenary'
+"Bundle 'file-line'
 " Plugin 'lyuts/vim-rtags'
 " Plugin 'wincent/command-t'
-Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
-Plugin 'utl.vim'
+"Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
+"Plugin 'utl.vim'
 " Plugin 'leafgarland/typescript-vim'
-Plugin 'mustache/vim-mustache-handlebars'
+"Plugin 'mustache/vim-mustache-handlebars'
 
 " ================ Turn Off Swap Files ==============
 
@@ -182,8 +161,6 @@ set incsearch
 " by default
 set wrap
 
-" Turn off hack typecheck-on-save
-let g:hack#enable = 0
 
 " 80 character highlighting
 set colorcolumn=81,101 " absolute columns to highlight "
