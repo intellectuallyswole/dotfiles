@@ -1,14 +1,11 @@
-# Git autocompletion
-#source ~/.git-prompt.sh
-#zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
-#fpath=(~/.zsh $fpath)
-#setopt PROMPT_SUBST ; PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
-#precmd () { __git_ps1 "%n" ":%~$ " "|%s" }
-# Git autocompletion
-#source ~/.git-completion.sh
+#oh-my-zsh installation.
+# export ZSH=$HOME/src/oh-my-zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/src/oh-my-zsh
+# Pure
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
+PURE_PROMPT_SYMBOL="ℳ  >"
 
 [ -f ~/src/dotfiles/.madelainerc-local ] && source ~/src/dotfiles/.madelainerc-local
 # source ~/.madelainerc
@@ -24,10 +21,13 @@ antigen apply
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="madelaine"
 #  ZSH_THEME="blinks"
-ZSH_THEME="tulloch"
+# ZSH_THEME="dracula"
+#ZSH_THEME="tulloch"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+CASE_GLOB="false"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -64,9 +64,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history )
+# plugins=(git history )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -115,3 +115,9 @@ if [ -f '/Users/madelaineboyd/Downloads/google-cloud-sdk/path.zsh.inc' ]; then .
 if [ -f '/Users/madelaineboyd/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/madelaineboyd/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 source ~/.profile
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# Haskell
+source /Users/madelaineboyd/.ghcup/env

@@ -8,6 +8,21 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+
+" =============== Vundle Initialization ===============
+" This loads all the plugins specified in ~/.vim/vundles.vim
+" Use Vundle plugin to manage all other plugins
+if filereadable(expand("~/.vim/vundles.vim"))
+	source ~/.vim/vundles.vim
+endif
+au BufNewFile,BufRead *.vundle set filetype=vim
+
+" ================ Plugins =====================
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -16,9 +31,23 @@ call vundle#begin()
 "
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+" Golang
+Plugin 'fatih/vim-go'
 
-" Plugins go here
+" Plugin 'lyuts/vim-rtags'
+" Plugin 'wincent/command-t'
+Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
+Plugin 'utl.vim'
+" Plugin 'leafgarland/typescript-vim'
+Plugin 'mustache/vim-mustache-handlebars'
+" Solidity contracts
+Plugin 'TovarishFin/vim-solidity'
+" Plugin?
+Plugin 'michaeljsmith/vim-indent-object'
 
+" Maybe this works?
+Bundle 'phleet/vim-mercenary'
+Bundle 'file-line'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -41,29 +70,7 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
-endif
-au BufNewFile,BufRead *.vundle set filetype=vim
-
-" ================ Plugins =====================
-Bundle 'phleet/vim-mercenary'
-Bundle 'file-line'
-" Plugin 'lyuts/vim-rtags'
-" Plugin 'wincent/command-t'
-Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
-Plugin 'utl.vim'
-" Plugin 'leafgarland/typescript-vim'
-Plugin 'mustache/vim-mustache-handlebars'
 
 " ================ Turn Off Swap Files ==============
 
@@ -92,6 +99,19 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " Enable file type detection
+  filetype on
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  " 2 spaces for py
+  autocmd FileType py setlocal ts=4 sts=4 sw=4 expandtab paste
+endif
 
 
 " Display tabs and trailing spaces visually
@@ -182,9 +202,6 @@ set incsearch
 " by default
 set wrap
 
-" Turn off hack typecheck-on-save
-let g:hack#enable = 0
-
 " 80 character highlighting
 set colorcolumn=81,101 " absolute columns to highlight "
 set colorcolumn=+1,+21 " relative (to textwidth) columns to highlight "
@@ -194,6 +211,11 @@ nnoremap p ]p
 nnoremap <c-p> p
 
 
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
 " Clang-format (ctrl+k)
 map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/local/share/clang/clang-format.py<CR>i
@@ -210,7 +232,7 @@ inoremap ;; <Esc>
 "nnoremap p p=`]<C-o>
 "nnoremap P P=`]<C-o>
 
-" Set tmux window title to be vim filename
+" Set tmux window title to be Vim filename
 "autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 "set title
 if exists('$TMUX')
@@ -221,3 +243,5 @@ if exists('$TMUX')
   autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
   set title
 endif
+
+let g:slime_target = "tmux"

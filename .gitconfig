@@ -1,6 +1,6 @@
 [user]
 	name = Madelaine Boyd
-	email = madelaine.boyd@gmail.com
+	email = madelaine.boyd+github@gmail.com
 
 [color]
   ui = auto
@@ -49,3 +49,8 @@
 	default = current
 #[submodule]
 #	recurse = true
+
+[init]
+	defaultBranch = main
+[credential]
+	helper = osxkeychain
