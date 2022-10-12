@@ -2,3 +2,4 @@
 .githubtoken
 .hg/
 oh-my-zsh
+.DS_Store
