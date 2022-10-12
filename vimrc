@@ -14,42 +14,42 @@ endif
 " the plugins.
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-	source ~/.vim/vundles.vim
-endif
-au BufNewFile,BufRead *.vundle set filetype=vim
-
-" ================ Plugins =====================
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
+" " =============== Vundle Initialization ===============
+" " This loads all the plugins specified in ~/.vim/vundles.vim
+" " Use Vundle plugin to manage all other plugins
+" if filereadable(expand("~/.vim/vundles.vim"))
+" 	source ~/.vim/vundles.vim
+" endif
+" au BufNewFile,BufRead *.vundle set filetype=vim
 "
-" " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" Golang
-Plugin 'fatih/vim-go'
-
+" " ================ Plugins =====================
+" " set the runtime path to include Vundle and initialize
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" " " alternatively, pass a path where Vundle should install plugins
+" " "call vundle#begin('~/some/path/here')
+" "
+" " " let Vundle manage Vundle, required
+" Plugin 'VundleVim/Vundle.vim'
+" " Golang
+" Plugin 'fatih/vim-go'
+"
+" " Plugin 'lyuts/vim-rtags'
+" " Plugin 'wincent/command-t'
+" Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
+" Plugin 'utl.vim'
+" " Plugin 'leafgarland/typescript-vim'
+" Plugin 'mustache/vim-mustache-handlebars'
+" " Solidity contracts
+" Plugin 'TovarishFin/vim-solidity'
+" " Plugin?
+" Plugin 'michaeljsmith/vim-indent-object'
+"Bundle 'phleet/vim-mercenary'
+"Bundle 'file-line'
 " Plugin 'lyuts/vim-rtags'
-" Plugin 'wincent/command-t'
-Plugin 'altercation/vim-colors-solarized', {'name': 'altercation-solarized'}
-Plugin 'utl.vim'
-" Plugin 'leafgarland/typescript-vim'
-Plugin 'mustache/vim-mustache-handlebars'
-" Solidity contracts
-Plugin 'TovarishFin/vim-solidity'
-" Plugin?
-Plugin 'michaeljsmith/vim-indent-object'
 
-" Maybe this works?
-Bundle 'phleet/vim-mercenary'
-Bundle 'file-line'
-call vundle#end()            " required
-filetype plugin indent on    " required
+" call vundle#end()            " required
+" filetype plugin indent on    " required
 
 " ================ General Config ====================
 
@@ -70,6 +70,11 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
 
 
 " ================ Turn Off Swap Files ==============
@@ -211,11 +216,6 @@ nnoremap p ]p
 nnoremap <c-p> p
 
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
 " Clang-format (ctrl+k)
 map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/local/share/clang/clang-format.py<CR>i
