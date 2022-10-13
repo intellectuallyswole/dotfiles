@@ -124,6 +124,14 @@ HISTTIMEFORMAT='%F %T '
 # By default, Bash only records a session to the .bash_history file on disk when the session terminates. This means that if you crash or your session terminates improperly, you lose the history up to that point. You can fix this by recording each line of history as you issue it, through the $PROMPT_COMMAND variable:
 PROMPT_COMMAND='history -a'
 
+# History substring search.
+# Will fail if you don't first `brew install zsh-history-substring-search`
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# bind up and down keys
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# more config: https://github.com/zsh-users/zsh-history-substring-search#configuration
 
 # Start tmux on launch
 tmux attach || tmux
