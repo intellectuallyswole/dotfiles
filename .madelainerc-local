@@ -104,5 +104,26 @@ if [ -f '$HOME/src/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/src/goo
 # Golang
 export PATH="$PATH:/usr/local/go/bin"
 
-# Start tmux
+# History changes!
+# https://blog.sanctum.geek.nz/better-bash-history/
+# Append to history file after each command (can be shared across sessions).
+setopt INC_APPEND_HISTORY
+
+# The default maximum number of commands saved into the .bash_history file is a rather meager 500.
+# If you want to keep history further back than a few weeks or so, you may as well bump this up by
+# explicitly setting $HISTSIZE to a much larger number in your .bashrc.
+HISTSIZE=1000000
+#  We can do the same thing with the $HISTFILESIZE variable.
+HISTFILESIZE=1000000
+# You can prevent commands that start with a space from going into history by setting $HISTCONTROL to ignorespace. You can also ignore duplicate commands, for example repeated du calls to watch a file grow, by adding ignoredups. There’s a shorthand to set both in ignoreboth.
+HISTCONTROL=ignoreboth
+
+# If you set $HISTTIMEFORMAT to something useful, Bash will record the timestamp of each command in its history. In this variable you can specify the format in which you want this timestamp displayed when viewed with history. I find the full date and time to be useful, because it can be sorted easily and works well with tools like cut and awk.
+HISTTIMEFORMAT='%F %T '
+
+# By default, Bash only records a session to the .bash_history file on disk when the session terminates. This means that if you crash or your session terminates improperly, you lose the history up to that point. You can fix this by recording each line of history as you issue it, through the $PROMPT_COMMAND variable:
+PROMPT_COMMAND='history -a'
+
+
+# Start tmux on launch
 tmux attach || tmux
