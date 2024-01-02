@@ -1,6 +1,3 @@
-#oh-my-zsh installation.
-# export ZSH=$HOME/src/oh-my-zsh
-
 # Pure
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
@@ -9,11 +6,11 @@ PURE_PROMPT_SYMBOL="ℳ  >"
 
 [ -f ~/src/dotfiles/.madelainerc-local ] && source ~/src/dotfiles/.madelainerc-local
 # source ~/.madelainerc
-source ~/src/dotfiles/antigen.zsh
+#source ~/src/dotfiles/antigen.zsh
 
-antigen bundle git
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
+#antigen bundle git
+#antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen apply
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -76,8 +73,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
 # homebrew python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
@@ -101,23 +96,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Set tmux window status title to be vim filename
 PROMPT_COMMAND='echo -ne "\033]0;\007"'
 
-# OPAM configuration
-# . /Users/madelaine/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export PATH="$HOME/.yarn/bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/madelaineboyd/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/madelaineboyd/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/madelaineboyd/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/madelaineboyd/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 source ~/.profile
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Haskell
-source /Users/madelaineboyd/.ghcup/env
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
