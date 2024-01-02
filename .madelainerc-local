@@ -7,7 +7,15 @@ alias hst='hg status';
 alias hupdate='hg commit -A --amend --reuse-message .';
 
 #git
+alias g='git';
 alias gw='git log --numstat';
+
+# git compatibility w/ main and master
+alias gcom='git checkout main 2> /dev/null || git checkout master'
+gbmaster () {
+		[ $(git rev-parse --verify main 2> /dev/null) ] && echo main || echo master
+}
+
 alias br='git branch';
 alias st='git status';
 alias cont='git rebase --continue; git cherry-pick --continue;'
@@ -19,7 +27,8 @@ alias rb='git rebase';
 alias change='git log --reverse origin/stable..';
 function mup () {
   branchname="$(git symbolic-ref --short HEAD)"
-  git checkout master && git fetch -p origin &&  git reset --hard origin/master
+	main_branch="$(gbmaster)"
+  git checkout $main_branch && git fetch -p origin &&  git reset --hard "origin/$main_branch"
   git checkout "$branchname"
 }
 alias co='git checkout';
@@ -94,5 +103,36 @@ function dockerprune {
 # Golang
 export PATH="$PATH:/usr/local/go/bin"
 
-# Start tmux
-#tmux attach || tmux
+# History changes!
+# https://blog.sanctum.geek.nz/better-bash-history/
+# https://jdhao.github.io/2021/03/24/zsh_history_setup/
+export HISTFILE=~/.zsh_history
+
+# the detailed meaning of the below three variable can be found in `man zshparam`.
+# Append to history file after each command (can be shared across sessions).
+setopt INC_APPEND_HISTORY_TIME
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000 # not sure if this is zsh?
+export SAVEHIST=1000000
+
+# The meaning of these options can be found in man page of `zshoptions`.
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+setopt EXTENDED_HISTORY  # record command start time
+export HISTTIMEFORMAT="[%F %T] "
+# History substring search.
+# Will fail if you don't first `brew install zsh-history-substring-search`
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# bind up and down keys
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# more config: https://github.com/zsh-users/zsh-history-substring-search#configuration
+
+# Tab completion (ZSH-specific)
+autoload -Uz compinit
+# -i to ignore potentially insecure directories (run `compaudit` to see which ones)
+compinit -i
+
