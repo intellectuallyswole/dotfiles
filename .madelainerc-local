@@ -16,11 +16,13 @@ gbmaster () {
 		[ $(git rev-parse --verify main 2> /dev/null) ] && echo main || echo master
 }
 
+alias aagpf='git commit -a --amend --reuse-message=HEAD; git commit -a --amend --reuse-message=HEAD && git push -f'
 alias br='git branch';
 alias st='git status';
 alias cont='git rebase --continue; git cherry-pick --continue;'
 alias gupdate='git commit -a --amend --reuse-message=HEAD'
 alias amend='git commit -a --amend --reuse-message=HEAD'
+alias damend='amend; amend'
 alias up='git fetch; git rebase origin/master';
 alias reb='git rebase -i';
 alias rb='git rebase';
@@ -28,8 +30,15 @@ alias change='git log --reverse origin/stable..';
 function mup () {
   branchname="$(git symbolic-ref --short HEAD)"
 	main_branch="$(gbmaster)"
-  git checkout $main_branch && git fetch -p origin &&  git reset --hard "origin/$main_branch"
+	git stash
+#  git checkout $main_branch && git fetch -p origin &&  git reset --hard "origin/$main_branch"
+  git checkout $main_branch && git fetch -p origin &&  git rebase origin "$main_branch"
   git checkout "$branchname"
+}
+function rbm () {
+	branchname="$(git symbolic-ref --short HEAD)"
+	main_branch="$(gbmaster)"
+	git rebase "origin/$main_branch"
 }
 alias co='git checkout';
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
@@ -57,16 +66,14 @@ alias hack=vim
 
 alias killadobe='sudo cp /dev/null /private/var/root/Library/Logs/PDApp.log'
 
-export NVM_DIR="/Users/madelaine/.nvm"
 
 # creeped from @compnerd's dotfiles:
 # https://github.com/compnerd/dotfiles/blob/master/zshrc
 # alias ping='ping -c4'
 
 #
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-alias killqld='find /private/var/folders/ -name com.apple.QuickLook.thumbnailcache | sudo xargs rm -rf && /usr/bin/killall -9 quicklookd'
+alias killqld='sudo find /private/var/folders/ -name com.apple.QuickLook.thumbnailcache | sudo xargs rm -rf && /usr/bin/killall -9 quicklookd'
 
 alias killcisco="kill -9 $(pgrep -i cisco)"
 
@@ -146,3 +153,8 @@ autoload -Uz compinit
 # -i to ignore potentially insecure directories (run `compaudit` to see which ones)
 compinit -i
 
+alias tfa='terraform apply'
+alias tfp='terraform plan -lock=false'
+alias tfi='terraform init'
+
+alias macdig='dscacheutil -q host -a name'
