@@ -9,5 +9,3 @@ set background=dark
 "set rtp+=~/.fzfA
 
 :inoremap jk <esc>
-
-source ~/dotfiles/vimrc
