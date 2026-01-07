@@ -1,3 +1,4 @@
+brew "bitwarden"
 brew "fd"
 brew "fzf"
 brew "jq"

@@ -1,10 +1,11 @@
 # Pure
-fpath+=$HOME/.zsh/pure
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 PURE_PROMPT_SYMBOL="ℳ  >"
 
 [ -f ~/src/dotfiles/.madelainerc-local ] && source ~/src/dotfiles/.madelainerc-local
+[ -f ~/code/dotfiles/.madelainerc-local ] && source ~/code/dotfiles/.madelainerc-local
 # source ~/.madelainerc
 #source ~/src/dotfiles/antigen.zsh
 
@@ -67,26 +68,17 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # User configuration
 
-# MacPorts Installer addition on 2012-09-20_at_17:19:00: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
 # homebrew python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+#export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 export PATH=/usr/local/bin/:$PATH
 export PATH=~/bin:$PATH
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 export EDITOR='vim'
 
 # Compilation flags
@@ -97,13 +89,17 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 PROMPT_COMMAND='echo -ne "\033]0;\007"'
 
 
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export PATH="$HOME/.yarn/bin:$PATH"
 
 source ~/.profile
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# OpenAI shrc (if customising, comment out to prevent it getting readded)
+for file in "/Users/boyd/.openai/shrc"/*; do
+    source "$file"
+done
+
+. "$HOME/.local/bin/env"
