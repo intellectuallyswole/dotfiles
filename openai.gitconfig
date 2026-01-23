@@ -1,0 +1,38 @@
+[core]
+	hooksPath = /Library/Application Support/OpenAI/Tools/PushPatrol/git-hooks
+[lfs]
+	hooksPath = /Library/Application Support/OpenAI/Tools/PushPatrol/git-hooks/lfs
+[user]
+	name = Madelaine Boyd
+	email = boyd@openai.com
+[maintenance]
+	repo = /Users/boyd/code/openai
+[alias]
+	l = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(     13 white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgs = log --stat
+	co = checkout
+	st = status
+	fetch = fetch -p
+	rb = rebase
+	cp  = cherry-pick
+	rbm = rebase origin/master
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = cyan bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[color "diff"]
+	whitespace = red reverse
+[push]
+	default = current

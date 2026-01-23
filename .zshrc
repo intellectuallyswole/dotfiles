@@ -97,9 +97,9 @@ bindkey '^[[B' history-substring-search-down
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# OpenAI shrc (if customising, comment out to prevent it getting readded)
-for file in "/Users/boyd/.openai/shrc"/*; do
-    source "$file"
-done
+## OpenAI shrc (if customising, comment out to prevent it getting readded)
+#for file in "/Users/boyd/.openai/shrc"/*; do
+#		source "$file"
+#done
 
 . "$HOME/.local/bin/env"
